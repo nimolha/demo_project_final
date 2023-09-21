@@ -1,4 +1,4 @@
-import LoginHRM from "../page_object/login2";
+import LoginHRM from "../page_object/login";
 import Buzz from "../page_object/buzz";
 import { randSentence, randWord } from "@ngneat/falso";
 
@@ -7,46 +7,46 @@ describe('should be able to add post',()=>{
     const buzze = new Buzz();
     
     it('should be able to add post with only Text',()=>{
-        log.visit2();
+        log.visit();
         log.credentials('Admin', 'admin123');
-        buzze.vivsit();
-        buzze.post(randSentence());
-    })
+        buzze.visit();
+        buzze.post_withText(randSentence());
+    });
 
     it('should be able to add post with image',()=>{
-        log.visit2();
+        log.visit();
         log.credentials('Admin', 'admin123');
-        buzze.vivsit();
-        buzze.photo();
-    })
+        buzze.visit();
+        buzze.post_withPhoto();
+    });
     it('should be able to like post with image',()=>{
-        log.visit2();
+        log.visit();
         log.credentials('Admin', 'admin123');
-        buzze.vivsit();
+        buzze.visit();
         buzze.liking_post();
-    })
+    });
     it('should be able to comment post with image',()=>{
-        log.visit2();
+        log.visit();
         log.credentials('Admin', 'admin123');
-        buzze.vivsit();
+        buzze.visit();
         buzze.commenting_post(randWord());
-    })
+    });
     it('should be able to share post with image',()=>{
-        log.visit2();
+        log.visit();
         log.credentials('Admin', 'admin123');
-        buzze.vivsit();
+        buzze.visit();
         buzze.share_post(randWord());
-    })
+    });
     it('should be able to edit post',()=>{
-        log.visit2();
+        log.visit();
         log.credentials('Admin', 'admin123');
-        buzze.vivsit();
+        buzze.visit();
         buzze.edit_post(randWord());
-    })
+    });
     it('should be able to delete post',()=>{
-        log.visit2();
+        log.visit();
         log.credentials('Admin', 'admin123');
-        buzze.vivsit();
+        buzze.visit();
         buzze.delete_post();
-    })
+    });
 })

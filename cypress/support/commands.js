@@ -38,4 +38,21 @@ Cypress.Commands.add('getInput',(labal,inText)=>{
 Cypress.Commands.add('leInput',(ae)=>{
     cy.contains('a',ae).click();
 })
-
+Cypress.Commands.add('credentialInput',(Inputs,cText)=>{
+    cy.get(`[name="${Inputs}"]`).type(cText);
+})
+Cypress.Commands.add('Adminclick',(labble,UInput)=>{
+    cy.contains('label',labble).parent().next().click().contains(UInput).click();
+})
+Cypress.Commands.add('AdminType',(Elabel,EInputs)=>{
+    cy.contains('label',Elabel).parent().next().type(EInputs);
+})
+Cypress.Commands.add('AdminEdit',(Ulabel,UserInput)=>{
+    cy.contains('label',Ulabel).parent().next().type(UserInput);
+})
+Cypress.Commands.add('Spinner', () =>{
+    cy.get('.oxd-loading-spinner').should('not.exist');
+})
+Cypress.Commands.add('likeCount',(changeLike)=>{
+    cy.get('.orangehrm-buzz-post-footer').first().find('p','.oxd-text oxd-text--p').invoke('text').as(changeLike);
+})

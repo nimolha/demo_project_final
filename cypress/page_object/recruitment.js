@@ -20,16 +20,16 @@ class Recuritment{
         cy.get('button').contains('Save').click();
         cy.contains('Success').should('be.visible');
     }
-    page2(note2){
+    set_forShortlist(note2){
         cy.get('button').contains('Shortlist').click({force: true} );
         cy.contains('Shortlist Candidate');
         cy.get('.oxd-textarea--resize-vertical').type(note2);
         cy.get('button').contains('Save').click();
         cy.contains('Success');
     }
-    page3(name,date,time,blah,title){
+    schedule_interview(name,date,time,blah,title){
+        cy.Spinner();
         cy.get('button').contains('Schedule Interview').click({force: true} );
-       // cy.contains('label','Interview Title').parent().next().type(title);
         cy.contains('label','Interviewer').parent().next().type(name);
         cy.contains('Goutam Ganesh').click();
         [['Date', date], ['Time', time], ['Notes', blah],['Interview Title',title]].forEach(ele => {
@@ -38,7 +38,7 @@ class Recuritment{
         cy.get('button').contains('Save').click();
         cy.contains('Success');
     }
-    method4( blur, blue){
+    recurit_employee( blur, blue){
         cy.get('button').contains('Mark Interview Passed').click({force: true} );
         cy.contains('label','Notes').parent().next().type(blur);
         cy.get('button').contains('Save').click();
@@ -48,36 +48,18 @@ class Recuritment{
         cy.get('button').contains('Save').click();
         cy.contains('Success');
     }
-    method5(blu){
+    Hire_employee(blu){
         cy.get('button').contains('Hire').click({force: true} );
         cy.contains('label','Notes').parent().next().type(blu);
         cy.get('button').contains('Save').click();
         cy.contains('Success');
         cy.contains('Application Stage');
 
-
     }
-    verify(){
+    verify(firstName){
        [['My Info'],['Recruitment']].forEach(ele=>{
-             cy.leInput(ele[0])
+             cy.leInput(ele[0])                                                            
         });
-        //cy.contains('(13) Records Found');
-       // cy.get('span').contains('Records Found').invoke('text').then(numberTotal =>{
-           // var reg = new RegExp(/\d+/g)
-            //let num = numberTotal.match(reg)
-           // cy.get('.oxd-table-card').its('length').should('eq', num)
-           // cy.wrap(num).as(numberTotal)
-       // })
-        // cy.get('.oxd-table-body').invoke('text').then(numberTotal =>{
-        //     let num = parseInt()
-        //     cy.get('..oxd-table-body').its('length').should('eq', num)
-        //     cy.wrap(num).as(numberTotal)
-        //     cy.should(numberTotal,'eq',numberTotal);
-        // })
-        
-
     }
-
-
 }
 export default Recuritment;
