@@ -1,52 +1,40 @@
-import LoginHRM from "../page_object/login";
 import Buzz from "../page_object/buzz";
 import { randSentence, randWord } from "@ngneat/falso";
 
 describe('should be able to add post',()=>{
-    const log = new LoginHRM();
+
     const buzze = new Buzz();
+
+    beforeEach(()=>{
+        cy.login('Admin', 'admin123')
+        cy.buzzPage()
+    });
     
     it('should be able to add post with only Text',()=>{
-        log.visit();
-        log.credentials('Admin', 'admin123');
-        buzze.visit();
         buzze.post_withText(randSentence());
     });
 
     it('should be able to add post with image',()=>{
-        log.visit();
-        log.credentials('Admin', 'admin123');
-        buzze.visit();
-        buzze.post_withPhoto();
+         buzze.post_withPhoto();
     });
+
     it('should be able to like post with image',()=>{
-        log.visit();
-        log.credentials('Admin', 'admin123');
-        buzze.visit();
-        buzze.liking_post();
+        buzze.liking_Post();
     });
+
     it('should be able to comment post with image',()=>{
-        log.visit();
-        log.credentials('Admin', 'admin123');
-        buzze.visit();
-        buzze.commenting_post(randWord());
+        buzze.commenting_Post(randWord());
     });
+
     it('should be able to share post with image',()=>{
-        log.visit();
-        log.credentials('Admin', 'admin123');
-        buzze.visit();
-        buzze.share_post(randWord());
+        buzze.share_Post(randWord());
     });
+
     it('should be able to edit post',()=>{
-        log.visit();
-        log.credentials('Admin', 'admin123');
-        buzze.visit();
-        buzze.edit_post(randWord());
+        buzze.edit_Post(randWord());
     });
+
     it('should be able to delete post',()=>{
-        log.visit();
-        log.credentials('Admin', 'admin123');
-        buzze.visit();
-        buzze.delete_post();
+        buzze.delete_Post();
     });
 })

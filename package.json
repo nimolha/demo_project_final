@@ -12,5 +12,8 @@
     "@ngneat/falso": "^7.1.0",
     "cypress": "^13.2.0",
     "cypress-file-upload": "^5.0.8"
+  },
+  "devDependencies": {
+    "chai": "^4.3.8"
   }
 }

@@ -1,18 +1,13 @@
 
 class Recuritment{
     
-    visit(){
-        cy.contains('a','Recruitment').click();
-        cy.get('button').contains('Add').click();
-        cy.contains('Add Candidate');
-    }
-    add_candidate(firstName, middleName, lastName, email, number, keywords, notes, ){
-        [['firstName',firstName], ['middleName',middleName], ['lastName',lastName]].forEach(ele =>{
+    add_Candidate(employee ){
+        [['firstName',employee.firstName], ['middleName',employee.middleName], ['lastName',employee.lastName]].forEach(ele =>{
              cy.target(ele[0],ele[1])
         });
         cy.get('.oxd-select-text-input').click();
         cy.contains('Senior QA Lead').click();
-        [['Email',email],['Contact Number',number],['Keywords',keywords],['Notes',notes]].forEach(ele=>{
+        [['Email',employee.email],['Contact Number',employee.number],['Keywords',employee.keywords],['Notes',employee.notes]].forEach(ele=>{
             cy.getInput(ele[0],ele[1])
         });
         cy.get('.oxd-file-div--active').click().attachFile('1.doc', { filePath: 'cypress/fixtures' });
@@ -20,6 +15,7 @@ class Recuritment{
         cy.get('button').contains('Save').click();
         cy.contains('Success').should('be.visible');
     }
+
     set_forShortlist(note2){
         cy.get('button').contains('Shortlist').click({force: true} );
         cy.contains('Shortlist Candidate');
@@ -27,7 +23,8 @@ class Recuritment{
         cy.get('button').contains('Save').click();
         cy.contains('Success');
     }
-    schedule_interview(name,date,time,blah,title){
+
+    schedule_Interview(name,date,time,blah,title){
         cy.Spinner();
         cy.get('button').contains('Schedule Interview').click({force: true} );
         cy.contains('label','Interviewer').parent().next().type(name);
@@ -38,17 +35,19 @@ class Recuritment{
         cy.get('button').contains('Save').click();
         cy.contains('Success');
     }
-    recurit_employee( blur, blue){
+
+    recurit_Employee( blur, blue){
         cy.get('button').contains('Mark Interview Passed').click({force: true} );
         cy.contains('label','Notes').parent().next().type(blur);
         cy.get('button').contains('Save').click();
         cy.contains('Success');
         cy.get('button').contains('Offer Job').click({force: true} );
         cy.contains('label','Notes').parent().next().type(blue);
-        cy.get('button').contains('Save').click();
-        cy.contains('Success');
+        cy.get('button').contains('Save').click().wait(2000);
+       // cy.contains('Success');
     }
-    Hire_employee(blu){
+
+    hire_Employee(blu){
         cy.get('button').contains('Hire').click({force: true} );
         cy.contains('label','Notes').parent().next().type(blu);
         cy.get('button').contains('Save').click();
@@ -56,10 +55,23 @@ class Recuritment{
         cy.contains('Application Stage');
 
     }
-    verify(firstName){
+
+    Verify(firstName){
        [['My Info'],['Recruitment']].forEach(ele=>{
              cy.leInput(ele[0])                                                            
         });
     }
+
+    // add(fname)
+    // verify(fname)
+
+
+    // addCandidate(fname){
+    //     add(fname)
+    //     verify(fname)
+    // }
+
+    // addCandidate('pema') 
 }
+
 export default Recuritment;
