@@ -1,30 +1,33 @@
 import Recuritment from "../page_object/recruitment";
-import LoginHRM from "../page_object/login";
-import { randEmail, randFirstName, randLastName, randNumber, randWord } from "@ngneat/falso";
+import { randWord } from "@ngneat/falso";
+import { employee } from "../utility/user";
+
 
 describe ('should be able to add candiate,and verify the details',()=>{
     beforeEach(()=>{
-        cy.visit('/')
-    })
+        cy.login('Admin', 'admin123')
+        cy.candidatePage()
+    });
+    const new_employee = new employee();
     const add = new Recuritment();
-    const loginh = new LoginHRM();
+    const add_employee ={
+        firstName : new_employee.firstName,
+        middleName : new_employee.middleName,
+        lastName : new_employee.lastName,
+        email : new_employee.email,
+        number : new_employee.number,
+        keywords : new_employee.keywords,
+        notes : new_employee.notes
+    };
     it('should be able to add candidate',()=>{
-        loginh.visit();
-        loginh.credentials('Admin', 'admin123');
-        add.visit();
-        add.add_candidate(randFirstName(),'pema', randLastName(),  randEmail(), randNumber(), randWord(), randWord(), );
+
+        add.add_Candidate(add_employee);
         add. set_forShortlist(randWord());
-        add.schedule_interview('G', '2023-10-01','11:00 AM', randWord(),  randWord());
-        add.recurit_employee(randWord(), randWord());
-        add.Hire_employee( randWord());
-        add.verify();
+        add.schedule_Interview('G', '2023-10-01','11:00 AM', randWord(),  randWord());
+        add.recurit_Employee(randWord(), randWord());
+        add.hire_Employee( randWord());
+        add.Verify();
 
     })
-    // it('should be able to verify new candidate',()=>{
-    //     loginh.visit();
-    //     loginh.credentials('Admin', 'admin123');
-    //     add.visit();
-        
-    // })
     
 })
