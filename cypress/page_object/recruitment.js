@@ -25,7 +25,7 @@ class Recuritment{
     }
 
     schedule_Interview(name,date,time,blah,title){
-        cy.Spinner();
+        cy.spinner();
         cy.get('button').contains('Schedule Interview').click({force: true} );
         cy.contains('label','Interviewer').parent().next().type(name);
         cy.contains('Goutam Ganesh').click();
@@ -62,16 +62,6 @@ class Recuritment{
         });
     }
 
-    // add(fname)
-    // verify(fname)
-
-
-    // addCandidate(fname){
-    //     add(fname)
-    //     verify(fname)
-    // }
-
-    // addCandidate('pema') 
 }
 
 export default Recuritment;

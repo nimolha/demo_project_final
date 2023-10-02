@@ -4,10 +4,10 @@ class Admin{
         cy.get('button').contains('Add').click();
         cy.contains('Admin');
         [['User Role','Admin'],['Status','Enabled']].forEach(ele=>{
-            cy.Adminclick(ele[0], ele[1])
+            cy.adminclick(ele[0], ele[1])
         });
         [['Username',uname],['Password',passwd],['Confirm Password',cpasswd],['Employee Name',ename]].forEach(ele=>{
-            cy.AdminType(ele[0],ele[1])
+            cy.adminType(ele[0],ele[1])
         });
         cy.contains('Goutam Ganesh').click();
         cy.get('button').contains('Save').click();
@@ -23,7 +23,7 @@ class Admin{
         cy.get('.oxd-checkbox-input-icon').click()
         cy.get('.user-password-cell').type(newPassword);
         [['Confirm Password',CnewPasswd],['Username',uName]].forEach(ele=>{
-            cy.AdminEdit(ele[0],ele[1])
+            cy.adminEdit(ele[0],ele[1])
         });
         
         cy.get('button').contains('Save').click();

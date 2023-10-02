@@ -3,12 +3,12 @@ import { expect } from "chai";
 class Buzz{
 
     post_withText(postText){
-        cy.Spinner();
+        cy.spinner();
         cy.get('.oxd-buzz-post--active').type(postText);
         cy.get('button[type="submit"]').then(btn =>{
             cy.wrap(btn).scrollIntoView();
             cy.wrap(btn).click({force: true}) });
-        cy.Spinner();
+        cy.spinner();
         cy.get('.orangehrm-buzz-post-body').first().find('p').should('contain',postText);
     }
 
