@@ -17,19 +17,19 @@ Cypress.Commands.add('leInput',(ae)=>{
     cy.contains('a',ae).click();
 })
 
-Cypress.Commands.add('Adminclick',(labble,UInput)=>{
+Cypress.Commands.add('adminclick',(labble,UInput)=>{
     cy.contains('label',labble).parent().next().click().contains(UInput).click();
 })
 
-Cypress.Commands.add('AdminType',(Elabel,EInputs)=>{
+Cypress.Commands.add('adminType',(Elabel,EInputs)=>{
     cy.contains('label',Elabel).parent().next().type(EInputs);
 })
 
-Cypress.Commands.add('AdminEdit',(Ulabel,UserInput)=>{
+Cypress.Commands.add('adminEdit',(Ulabel,UserInput)=>{
     cy.contains('label',Ulabel).parent().next().type(UserInput);
 })
 
-Cypress.Commands.add('Spinner', () =>{
+Cypress.Commands.add('spinner', () =>{
     cy.get('.oxd-loading-spinner').should('not.exist');
 })
 
